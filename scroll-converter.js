@@ -185,7 +185,7 @@ window.scrollConverter = (function (window, document, undefined) {
 				setX = arguments[1] ? arguments[1] : 0;
 			} else if (!isNaN(parseFloat(arguments[0])) && isFinite(arguments[0])){
 				setX = arguments[0];
-				callback = null;
+				callback = arguments[1] ? arguments[1] : null;
 			} else {
 				setX = 0;
 				callback = null;

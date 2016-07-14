@@ -44,7 +44,11 @@ The `activate` method takes a function as an optional argument, which will execu
 	scrollConverter.activate(function (offset) {
 		console.log(offset); // Logs the current horizontal scroll offset
 	});
+The `activate` method takes two optional arguments. The first is a function with an argument of the current horizontal scroll offset, which will execute everytime the scrolling updates. The second is a number which can define the starting horizontal scroll offset. 
 
+	scrollConverter.activate(function (offset) {
+		console.log(offset); // Logs the current horizontal scroll offset
+	}, 2500);
 
 ### Deactivation
 If you later want to deactivate the conversion, you can call the `deactivate` method:
