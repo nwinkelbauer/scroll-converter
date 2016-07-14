@@ -179,14 +179,24 @@ window.scrollConverter = (function (window, document, undefined) {
 
 		// Activate the scrolling switch
 		//  An optional callback can be passed in, which will fire at every scroll update
-		activate: function (callback) {
+		activate: function () {
+			if (typeof arguments[0] === "function"){
+				callback = arguments[0];
+				setX = arguments[1] ? arguments[1] : 0;
+			} else if (!isNaN(parseFloat(arguments[0])) && isFinite(arguments[0])){
+				setX = arguments[0];
+				callback = null;
+			} else {
+				setX = 0;
+				callback = null;
+			}
 
 			// Set state
 			active = true;
 
 			// Bind events if it hasn't been done before
 			if (!eventsBound) {
-				var offset = { x: 0, y: 0 };
+				var offset = { x: setX, y: 0 };
 				bindEvents(offset, callback);
 				eventsBound = true;
 			}
